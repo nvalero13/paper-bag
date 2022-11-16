@@ -1,0 +1,134 @@
+body {
+  margin: 0;
+  font-family: Wendy One;
+}
+
+h1 {
+  margin: 0;
+  padding-top: 100px;
+  color: white;
+  font-size: 130px;
+  text-align: center;
+  font-weight: 100;
+}
+
+h2 {
+  color: white;
+  font-size: 40px;
+  font-weight: 100;
+}
+
+.background {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-image: radial-gradient(#00a3ff, #0064ad);
+  position: relative;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 10vh;
+}
+
+.add-name {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+}
+
+.paper {
+  background-image: url(img/Paper.png);
+  width: 235px;
+  height: 140px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-top: 20px;
+  padding: 20px 0 0 40px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: center;
+}
+
+.paper input {
+  font-family: Wendy One;
+  border: none;
+  background-color: transparent;
+  transform: rotate(-5deg);
+  font-size: 20px;
+  width: 130px;
+  height: 80px;
+}
+
+.add-button {
+  height: 85px;
+  width: 85px;
+  border-radius: 10px;
+  border: none;
+
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+
+  transition: 100ms ease-in;
+}
+
+.add-button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+
+  transition: 100ms ease-in;
+}
+
+.bag {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+
+  transition: 100ms ease-in;
+}
+
+.bag:hover {
+  transform: translateY(-30px);
+  transform: rotate(5deg);
+  cursor: pointer;
+
+  transition: 100ms ease-in;
+}
+
+.bag:hover + .proceed-text {
+  opacity: 1;
+  z-index: 0;
+  transition: 500ms ease-in-out;
+}
+
+.proceed-text {
+  position: absolute;
+  left: 50%;
+
+  font-size: 50px;
+  color: #0064ad;
+  bottom: 150px;
+  transform: translateX(-50%);
+  z-index: 0;
+  opacity: 0;
+
+  transition: 500ms ease-in-out;
+}
+
+.bag img {
+  position: absolute;
+  transform: translate(-50%, -80%);
+}
+
+.bag .front {
+  z-index: 3;
+}
+
+.bag .back {
+  z-index: 1;
+}
