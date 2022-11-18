@@ -93,12 +93,12 @@ h2 {
     transform: scale(0.7) translateY(-50px) rotate(70deg);
   }
 
-  80% {
+  83% {
     opacity: 1;
-    transform: scale(0.7) translateY(70vh) rotate(90deg);
+    transform: scale(0.7) translateY(50vh) rotate(90deg) translateX(50vw);
   }
 
-  83% {
+  84% {
     opacity: 0;
     transform: translateY(70vh);
   }
@@ -113,11 +113,11 @@ h2 {
   }
 }
 
-.paper-empty {
-  animation: paper-empty 0.5s forwards;
+.nope {
+  animation: nope 0.5s forwards;
 }
 
-@keyframes paper-empty {
+@keyframes nope {
   33% {
     transform: rotate(-5deg);
   }
@@ -132,8 +132,8 @@ h2 {
 }
 
 .add-button {
-  height: 85px;
-  width: 85px;
+  height: 75px;
+  width: 75px;
   border-radius: 10px;
   border: none;
 
@@ -149,6 +149,11 @@ h2 {
   transition: 100ms ease-in;
 }
 
+.add-button img {
+  height: 30px;
+  width: 30px;
+}
+
 .bag {
   position: absolute;
   top: 100%;
@@ -157,30 +162,33 @@ h2 {
   transition: 100ms ease-in;
 }
 
-.bag:hover {
-  transform: translateY(-30px);
+.bag-div:hover .bag {
   transform: rotate(5deg);
   cursor: pointer;
 
   transition: 100ms ease-in;
 }
 
-.bag:hover + .proceed-text {
+.bag-div:hover .proceed-text {
   opacity: 1;
   z-index: 0;
+  cursor: pointer;
+  z-index: 4;
+
   transition: 500ms ease-in-out;
 }
 
 .proceed-text {
   position: absolute;
   left: 50%;
-
+  z-index: 5;
   font-size: 50px;
   color: #0064ad;
   bottom: 0;
   transform: translateX(-50%);
-  z-index: 0;
+  z-index: 4;
   opacity: 0;
+  pointer-events: none;
 
   transition: 500ms ease-in-out;
 }
@@ -196,6 +204,95 @@ h2 {
 
 .bag .back {
   z-index: 1;
+}
+
+.overlay {
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  pointer-events: none;
+  opacity: 0;
+
+  transition: opacity 1s;
+}
+
+.result {
+  transform: scale(0);
+
+  transition: 500ms ease-in-out;
+}
+
+.winner {
+  font-family: Wendy One;
+
+  text-align: left;
+
+  transform: rotate(-5deg);
+  font-size: 20px;
+  width: 130px;
+  margin-top: 30px;
+}
+
+.add-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  transition: transform 300ms ease-in-out;
+}
+
+.sorting-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  transform: scale(0);
+  display: none;
+
+  transition: transform 300ms ease-in-out;
+}
+
+.sorting {
+  animation: sorting 2s infinite;
+}
+
+@keyframes sorting {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.scale-0 {
+  transform: scale(0);
+
+  transition: transform 300ms ease-in-out;
+}
+
+.translate-down {
+  animation: translate-down 2s forwards 300ms;
+}
+
+@keyframes translate-down {
+  30% {
+    transform: translateY(-30px);
+  }
+
+  100% {
+    transform: translateY(500px);
+  }
 }
 
 @media (max-width: 600px) {
