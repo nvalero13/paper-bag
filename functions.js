@@ -1,8 +1,27 @@
+addEventListener("load", (e) => {
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+  document.querySelector("body").style.height = window.innerHeight+"px";
+});
+
+window.addEventListener("resize", () => {
+  // We execute the same script as before
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+});
+
 let list = [];
 
-document.querySelector(".add-button").addEventListener("click", () => {
-  let newName = document.querySelector(".paper input").value;
+document.querySelector(".add-button").addEventListener("click", addName);
+document.querySelector(".paper input").addEventListener("keydown", function(e) {
+  if (e.keyCode === 13) {
+    addName()
+  }
+})
 
+function addName() {
+  let newName = document.querySelector(".paper input").value;
+  document.querySelector(".paper input").setAttribute("disabled","")
   if (newName != "") {
     list.push(newName);
 
@@ -10,6 +29,7 @@ document.querySelector(".add-button").addEventListener("click", () => {
 
     setTimeout(() => {
       document.querySelector(".paper input").value = "";
+      document.querySelector(".paper input").removeAttribute("disabled")
     }, 2000 * 0.8);
 
     setTimeout(() => {
@@ -22,7 +42,7 @@ document.querySelector(".add-button").addEventListener("click", () => {
       document.querySelector(".paper").classList.remove("nope");
     }, 1000);
   }
-});
+}
 
 document.querySelector(".bag").addEventListener("click", () => {
   if (list.length > 1) {
@@ -31,6 +51,7 @@ document.querySelector(".bag").addEventListener("click", () => {
     document.querySelector(".winner").innerHTML = list[num];
     // Esconde add-div
     document.querySelector(".add-div").classList.add("scale-0");
+    document.querySelector(".proceed-text").classList.add("scale-0");
     // Esconde bag-div
     document.querySelector(".bag").classList.add("translate-down");
     // Muestra sorting-div y animar

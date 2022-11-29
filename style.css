@@ -1,6 +1,7 @@
 body {
   margin: 0;
   font-family: Wendy One;
+  height: calc(var(--vh, 1vh) * 100);
 }
 
 h1 {
@@ -19,7 +20,7 @@ h2 {
 }
 
 .background {
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   overflow: hidden;
   background-image: radial-gradient(#00a3ff, #0064ad);
@@ -42,10 +43,10 @@ h2 {
 }
 
 .paper {
-  background-image: url(img/Paper.png);
+  background-image: url(img/Paper\ v0.png);
   width: 235px;
   height: 140px;
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   margin-top: 20px;
   padding: 20px 0 0 40px;
@@ -196,6 +197,7 @@ h2 {
 .bag img {
   position: absolute;
   transform: translate(-50%, -80%);
+  width: 325px;
 }
 
 .bag .front {
@@ -295,13 +297,28 @@ h2 {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   h1 {
-    padding-top: 50px;
-    font-size: 60px;
+    padding-top: 70px;
+    font-size: 90px;
   }
 
   h2 {
     font-size: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  h1 {
+    padding-top: 70px;
+    font-size: 70px;
+  }
+
+  h2 {
+    font-size: 30px;
+  }
+
+  .bag img {
+    width: 280px;
   }
 }
