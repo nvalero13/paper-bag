@@ -82,7 +82,7 @@ h2 {
 }
 
 .to-bag {
-  animation: to-bag 2s ease-in-out forwards;
+  animation: to-bag 1.5s ease-in-out forwards;
 }
 
 @keyframes to-bag {
@@ -139,13 +139,6 @@ h2 {
   border: none;
 
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-
-  transition: 100ms ease-in;
-}
-
-.add-button:hover {
-  cursor: pointer;
-  transform: scale(1.1);
 
   transition: 100ms ease-in;
 }
@@ -217,19 +210,21 @@ h2 {
   left: 0;
   width: 100%;
   height: 100%;
-
+  pointer-events: none;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  pointer-events: none;
   opacity: 0;
 
-  transition: opacity 1s;
+  transition: opacity 500ms ease-in;
 }
 
 .result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   transform: scale(0);
 
   transition: 500ms ease-in-out;
@@ -244,6 +239,44 @@ h2 {
   font-size: 20px;
   width: 130px;
   margin-top: 30px;
+}
+
+.winner-paper {
+  margin-bottom: 20px;
+  transition: 500ms ease;
+}
+
+.next-paper {
+  margin: 4px 0;
+  padding: 10px 20px;
+  border-radius: 10px;
+  width: 150px;
+  border: none;
+  font-size: 20px;
+  font-family: Wendy One;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  transform: scale(0);
+  transition: 100ms ease-in;
+}
+
+.new-draw {
+  margin: 4px 0;
+  padding: 10px 20px;
+  border-radius: 10px;
+  width: 150px;
+  border: none;
+  font-size: 20px;
+  font-family: Wendy One;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  transform: scale(0);
+  transition: 100ms ease-in;
+}
+
+.btn:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+
+  transition: 100ms ease-in;
 }
 
 .add-div {
@@ -297,7 +330,7 @@ h2 {
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 800px), (max-height: 750px) {
   h1 {
     padding-top: 70px;
     font-size: 90px;
@@ -308,7 +341,7 @@ h2 {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 600px), (max-height: 700px) {
   h1 {
     padding-top: 70px;
     font-size: 70px;

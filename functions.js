@@ -30,11 +30,11 @@ function addName() {
     setTimeout(() => {
       document.querySelector(".paper input").value = "";
       document.querySelector(".paper input").removeAttribute("disabled")
-    }, 2000 * 0.8);
+    }, 1500 * 0.7);
 
     setTimeout(() => {
       document.querySelector(".paper").classList.remove("to-bag");
-    }, 3000);
+    }, 1500);
   } else {
     document.querySelector(".paper").classList.add("nope");
 
@@ -45,7 +45,9 @@ function addName() {
 }
 
 document.querySelector(".bag").addEventListener("click", () => {
+  document.querySelector(".winner-text").innerHTML = ""
   if (list.length > 1) {
+    // Shuffle array and get the first one
     let num = Math.floor(Math.random() * list.length);
 
     document.querySelector(".winner").innerHTML = list[num];
@@ -89,6 +91,7 @@ document.querySelector(".bag").addEventListener("click", () => {
       }, 5000);
       setTimeout(() => {
         document.querySelector(".overlay").style.opacity = "1";
+        document.querySelector(".overlay").style.pointerEvents = "all"
         setTimeout(() => {
           let i = 0;
           const winnerString = "And the winner is...";
@@ -99,9 +102,11 @@ document.querySelector(".bag").addEventListener("click", () => {
 
             if (i > winnerString.length) {
               clearInterval(winnerTextID);
-              setTimeout(() => document.querySelector(".result").style.transform = "scale(1)", 100)
+              setTimeout(() => document.querySelector(".result").style.transform = "scale(1)", 200)
+              setTimeout(() => document.querySelector(".next-paper").style.transform = "scale(1)", 1500)
+              setTimeout(() => document.querySelector(".new-draw").style.transform = "scale(1)", 1700)
             }
-          }, 100);
+          }, 50);
         }, 500);
       }, 5500);
     }, 1000);
@@ -113,3 +118,36 @@ document.querySelector(".bag").addEventListener("click", () => {
     }, 1000);
   }
 });
+
+let nextCount = -1
+// NEXT PAPER WINNER
+document.querySelector(".next-paper").addEventListener("click", () =>  {
+  document.querySelector(".next-paper").setAttribute("disabled","")
+  nextCount++
+  let winnerNum = ["2nd","3th","4th","5th","6th","7th","8th","next"]
+ 
+  setTimeout(() => document.querySelector(".winner-text").innerHTML = `And the ${list.length == 1 ? "last" : winnerNum[nextCount]} winner is...`, 100)
+  
+  document.querySelector(".winner-paper").style.transform = "scale(0) translateX(-100px)"
+
+  
+ setTimeout(() => {
+  let num = Math.floor(Math.random() * list.length);
+  document.querySelector(".winner").innerHTML = list[num];
+  list.splice(num, 1);
+ }, 300)
+
+  setTimeout(() => document.querySelector(".winner-paper").style.transform = "scale(0) translateX(50px)", 500)
+  
+
+  setTimeout(() => {
+    document.querySelector(".winner-paper").style.transform = "scale(1) translateX(0px)"
+    list.length == 0 ? "" : document.querySelector(".next-paper").removeAttribute("disabled")
+  }, 800)
+})
+
+
+// NEW DRAW 
+document.querySelector(".new-draw").addEventListener("click", () =>  {
+  location.reload()
+})
