@@ -88,7 +88,7 @@ document.querySelector(".bag").addEventListener("click", () => {
         setTimeout(() => {
           document.querySelector(".sorting-div").style.display = "none";
         }, 300);
-      }, 5000);
+      }, 3200);
       setTimeout(() => {
         document.querySelector(".overlay").style.opacity = "1";
         document.querySelector(".overlay").style.pointerEvents = "all"
@@ -102,13 +102,21 @@ document.querySelector(".bag").addEventListener("click", () => {
 
             if (i > winnerString.length) {
               clearInterval(winnerTextID);
+              document.querySelector(".next-paper").style.opacity = "0"
+              document.querySelector(".new-draw").style.opacity = "0"
               setTimeout(() => document.querySelector(".result").style.transform = "scale(1)", 200)
-              setTimeout(() => document.querySelector(".next-paper").style.transform = "scale(1)", 1500)
-              setTimeout(() => document.querySelector(".new-draw").style.transform = "scale(1)", 1700)
+              setTimeout(() => {
+                document.querySelector(".next-paper").style.transform = "scale(1)" 
+                document.querySelector(".next-paper").style.opacity = "1"
+              }, 1500)
+              setTimeout(() => {
+                document.querySelector(".new-draw").style.transform = "scale(1)"
+                document.querySelector(".new-draw").style.opacity = "1"
+              }, 1800)
             }
-          }, 50);
+          }, 70);
         }, 500);
-      }, 5500);
+      }, 3500);
     }, 1000);
   } else {
     document.querySelector(".bag").classList.add("nope");
